@@ -1,0 +1,38 @@
+<div class="form-container">
+    <h2 class="form-title">Agregar Nueva Película</h2>
+    <form (ngSubmit)="agregarPelicula()">
+        <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input type="text" [(ngModel)]="pelicula.titulo" id="titulo" name="titulo" required />
+        </div>
+
+        <!-- <div class="form-group">
+            <label for="anio">Año:</label>
+            <input type="number" [(ngModel)]="pelicula.anio" id="anio" name="anio" required />
+        </div> -->
+
+        <div class="form-group">
+            <label for="director">Director:</label>
+            <input type="text" [(ngModel)]="pelicula.director" id="director" name="director" required />
+        </div>
+
+        <div class="form-group">
+            <label for="genero">Género</label>
+            <input type="text" id="genero" [(ngModel)]="pelicula.genero" name="genero">
+        </div>
+
+        <div class="form-group">
+            <label for="actores">Actores:</label>
+            <select id="actores" [(ngModel)]="pelicula.actores_id" name="actores" required>
+                @for (actor of actores; track $index) {
+                <option [value]="actor.actores_id">{{ actor.actor }} {{ actor.apellidos }}</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-buttons">
+            <button type="submit" class="submit-btn">Agregar Película</button>
+            <button type="button" class="cancel-btn" routerLink="/peliculas">Cancelar</button>
+        </div>
+    </form>
+</div>

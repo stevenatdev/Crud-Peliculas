@@ -1,0 +1,26 @@
+<div class="container">
+    <h1 class="title">Lista de Actores</h1>
+
+    <!-- Botones para agregar nueva película y actor -->
+    <div class="add-buttons">
+        <button class="add-movie-btn" routerLink="/actor/nuevo">Agregar Nuevo Actor</button>
+        <button class="add-actor-btn" routerLink="/peliculas">Películas</button>
+    </div>
+
+    <!-- Lista de películas -->
+    @for (actor of actores; track $index) {
+    <div class="movie-card">
+        <div class="movie-info">
+            <h2>{{ actor.nombre }} {{ actor.apellido }}</h2>
+            <p><strong>Fecha de Nacimiento:</strong> {{ actor.fecha_nacimiento }}</p>
+            <p><strong>nacionalidad:</strong> {{ actor.nacionalidad }}</p>
+
+            <!-- Botones para el CRUD -->
+            <div class="buttons">
+                <button routerLink="/actor/editar/{{actor.actores_id}}" class="edit-button">Editar</button>
+                <button (click)="eliminarActor(actor.actores_id)" class="delete-button">Eliminar</button>
+            </div>
+        </div>
+    </div>
+    }
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+    <h1 class="title">Lista de Películas</h1>
+
+    <!-- Botones para agregar nueva película y actor -->
+    <div class="add-buttons">
+        <button class="add-movie-btn" routerLink="/pelicula/nueva">Agregar Nueva Película</button>
+        <button class="add-actor-btn" routerLink="/actores">Actores</button>
+    </div>
+
+    <!-- Lista de películas -->
+    @for (pelicula of peliculas; track $index) {
+    <div class="movie-card">
+        <div class="movie-info">
+            <h2>{{ pelicula.titulo }}</h2>
+            <p><strong>Año:</strong> {{ pelicula.anio }}</p>
+            <p><strong>Director:</strong> {{ pelicula.director }}</p>
+            <p><strong>Actores:</strong> {{ pelicula.actor }} {{ pelicula.apellidos }}</p>
+            <p><strong>Género:</strong> {{ pelicula.genero }}</p>
+
+            <!-- Botones para el CRUD -->
+            <div class="buttons">
+                <button routerLink="/pelicula/editar/{{pelicula.pelicula_id}}" class="edit-button">Editar</button>
+                <button (click)="eliminarPelicula(pelicula.pelicula_id)" class="delete-button">Eliminar</button>
+            </div>
+        </div>
+    </div>
+    }
+</div>
